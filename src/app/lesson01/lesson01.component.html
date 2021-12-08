@@ -5,11 +5,11 @@
         <p class="bad-words-main">{{badContent.join(', ')}}</p>
     </div>
     <div class="addForm">
-        <input type="text" class="input-text" placeholder="{{wordHere}}" [(ngModel)]="badWord">
+        <input type="text" class="input-text" [class.border]='isEmpty' placeholder="{{wordHere}}" [(ngModel)]="badWord">
         <button class="add-button" (click)="addBadWord()">add</button>
         <button class="reset-button" (click)="removeBadWords()">reset</button>
     </div>
-    <textarea type="text" class="input-text-cenzor" placeholder="{{textHere}}" [(ngModel)]="cenzorText"></textarea>
+    <textarea type="text" class="input-text-cenzor" [class.border]='isEmptyCenzor' placeholder="{{textHere}}" [(ngModel)]="cenzorText"></textarea>
     <button class="cenzor-button" (click)="cenzor()">cenzor</button>
 
 </div>

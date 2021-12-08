@@ -12,6 +12,9 @@ export class Lesson01Component implements OnInit {
   public cenzorText: string = '';
   public textHere = 'text here..';
   public wordHere = 'word here..'
+  public isEmpty = false;
+  public isEmptyCenzor = false;
+
 
   private re = /\w/g;
 
@@ -25,25 +28,36 @@ export class Lesson01Component implements OnInit {
       this.badContent.push(this.badWord.trim());
       this.badWord = '';
       this.wordHere = 'word here..';
+      this.isEmpty = false;
+
     }
     else {
       this.wordHere = 'Please write a word!';
+      this.isEmpty = true;
+
     }
   }
   removeBadWords(): void {
     this.badContent.length = 0;
+    this.cenzorText = '';
+    this.isEmpty = false;
+    this.isEmptyCenzor = false;
+    this.wordHere = 'word here..';
+    this.textHere = `text here.. `;
   }
 
   cenzor(): void {
-
 
     if (this.cenzorText.length > 0) {
       const textCenzor: string[] = this.cenzorText.split(" ");
       this.cenzorText = textCenzor.map(elem => this.badContent.includes(elem) ? elem.replace(this.re, '*') : elem).join(' ');
       this.textHere = `text here.. `;
+      this.isEmptyCenzor = false;
+
     }
     else {
       this.textHere = `Please write a text!`;
+      this.isEmptyCenzor = true;
     }
   }
 
